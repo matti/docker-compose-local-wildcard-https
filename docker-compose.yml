@@ -1,0 +1,20 @@
+version: "3.6"
+
+services:
+  nginx-proxy:
+    image: mesudip/nginx-proxy
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - DHPARAM_SIZE=8 # faster generation
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./ssl/certs:/etc/ssl/certs
+      - ./ssl/private:/etc/ssl/private
+  doom:
+    image: mattipaksula/http-doom
+    environment:
+      - VIRTUAL_HOST1=https://doom.sama.asia -> :8080
+      - VIRTUAL_HOST2=https://anothername.sama.asia -> :8080
