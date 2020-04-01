@@ -3,7 +3,7 @@
 ## How
 
 put `*.yourdomain.tld.crt` in `ssl/certs`
-and `*.yourdomain.tld.crt` in `ssl/private`
+and `*.yourdomain.tld.key` in `ssl/private`
 
     docker-compose up
 
